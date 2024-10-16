@@ -1,6 +1,8 @@
 package com.example.part_11_task_104_androidpro;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,14 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+       final Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Log.d("myLog", "Four seconds are passed");
+                handler.postDelayed(this, 4000);
+            }
+        };
+        handler.post(runnable);
     }
 }
