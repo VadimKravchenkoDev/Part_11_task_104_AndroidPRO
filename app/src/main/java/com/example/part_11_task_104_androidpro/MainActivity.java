@@ -1,6 +1,7 @@
 package com.example.part_11_task_104_androidpro;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 
@@ -22,14 +23,28 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-       final Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
+        CountDownTimer myTimer = new CountDownTimer(10000, 1000) {
             @Override
-            public void run() {
-                Log.d("myLog", "Four seconds are passed");
-                handler.postDelayed(this, 4000);
+            public void onTick(long millisUntilFinished) {
+                Log.d("timer",
+                        String.valueOf(millisUntilFinished/1000)+
+                        "seconds left");
+            }
+
+            @Override
+            public void onFinish() {
+                Log.d("timer", "Finish");
             }
         };
-        handler.post(runnable);
+        myTimer.start();
+//       final Handler handler = new Handler();
+//        Runnable runnable = new Runnable() {
+//            @Override
+//            public void run() {
+//                Log.d("myLog", "Four seconds are passed");
+//                handler.postDelayed(this, 4000);
+//            }
+//        };
+//        handler.post(runnable);
     }
 }
